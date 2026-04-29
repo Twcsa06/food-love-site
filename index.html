@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>食在有愛・實在有愛 ｜ 集食送暖：好心肝公益計畫</title>
+  <meta name="description" content="買一份在地禮盒，捐一份營養菜品給弱勢家庭。台南大學在職碩班團隊，與 NPOChannel 公益整合平台合作。" />
+  <meta property="og:title" content="食在有愛・讓每一餐都有溫度" />
+  <meta property="og:description" content="買一份在地禮盒，捐一份營養菜品給弱勢家庭。" />
+  <meta property="og:type" content="website" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'forest':    { 50:'#F4F8EE', 100:'#E5EED5', 200:'#C8D6BC', 400:'#97BC62', 600:'#3A6B3B', 700:'#2C5F2D', 800:'#214820', 900:'#163315' },
+            'accent':    '#B85042',
+            'accent-2':  '#D77B6E',
+            'cream':     '#FAFAF7',
+            'paper':     '#F8F5EC',
+            'ink':       '#212121',
+          },
+          fontFamily: {
+            'sans':  ['"Noto Sans TC"', 'system-ui', 'sans-serif'],
+            'serif': ['"Noto Serif TC"', 'serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans TC', system-ui, sans-serif; color: #212121; background: #FAFAF7; }
+    h1, h2, h3, .serif { font-family: 'Noto Serif TC', serif; }
+    /* 進場動畫 */
+    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity .8s ease-out, transform .8s ease-out; }
+    .fade-up.in { opacity: 1; transform: translateY(0); }
+    /* 浮動 LINE 按鈕脈動 */
+    @keyframes pulse-ring {
+      0%   { box-shadow: 0 0 0 0 rgba(0, 195, 0, 0.5); }
+      70%  { box-shadow: 0 0 0 18px rgba(0, 195, 0, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 195, 0, 0); }
+    }
+    .line-pulse { animation: pulse-ring 2.5s infinite; }
+    /* 漸層裝飾 */
+    .grad-forest { background: linear-gradient(135deg, #2C5F2D 0%, #214820 100%); }
+    .grad-accent { background: linear-gradient(135deg, #B85042 0%, #8E3A30 100%); }
+    .leaf-pattern {
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(151,188,98,.12) 0, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(151,188,98,.10) 0, transparent 40%);
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- ============== Navigation ============== -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur border-b border-forest-100">
+    <div class="max-w-6xl mx-auto px-5 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2">
+        <span class="w-9 h-9 grad-forest rounded-full flex items-center justify-center text-white font-serif font-bold">愛</span>
+        <div class="leading-tight">
+          <div class="font-serif font-bold text-forest-700 text-lg">食在有愛</div>
+          <div class="text-[10px] text-forest-600 tracking-widest">SHIZAI YOUAI</div>
+        </div>
+      </a>
+      <div class="hidden md:flex items-center gap-7 text-sm font-medium text-ink/80">
+        <a href="#products" class="hover:text-forest-700 transition">商品</a>
+        <a href="#promise" class="hover:text-forest-700 transition">公益承諾</a>
+        <a href="#impact" class="hover:text-forest-700 transition">公益儀表板</a>
+        <a href="#story" class="hover:text-forest-700 transition">品牌故事</a>
+        <a href="#b2b" class="hover:text-forest-700 transition">企業採購</a>
+      </div>
+      <a href="https://page.line.biz/account-page/1937878987617697/profile" target="_blank" rel="noopener"
+         class="bg-forest-700 hover:bg-forest-800 text-white text-sm font-bold px-4 py-2 rounded-full transition flex items-center gap-1.5">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.631.63 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.282.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        LINE 詢問
+      </a>
+    </div>
+  </nav>
+
+  <!-- ============== Hero ============== -->
+  <section id="top" class="pt-24 lg:pt-32 pb-16 lg:pb-24 relative overflow-hidden leaf-pattern">
+    <div class="max-w-6xl mx-auto px-5 lg:px-8 relative">
+      <!-- 裝飾圓 -->
+      <div class="absolute -top-20 -right-32 w-96 h-96 bg-forest-100 rounded-full blur-3xl opacity-50"></div>
+      <div class="absolute -bottom-20 -left-32 w-72 h-72 bg-accent/10 rounded-full blur-3xl"></div>
+
+      <div class="relative grid lg:grid-cols-2 gap-12 items-center">
+        <div class="fade-up">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-forest-50 text-forest-700 rounded-full text-xs font-medium mb-5">
+            <span class="w-1.5 h-1.5 bg-accent rounded-full"></span>
+            NPOChannel × 台南大學在職碩班 公益實踐獎
+          </div>
+          <h1 class="font-serif text-5xl lg:text-7xl font-black text-forest-800 leading-tight mb-4">
+            食在有愛<br>
+            <span class="text-forest-600">實在有愛</span>
+          </h1>
+          <p class="text-lg lg:text-xl text-ink/70 leading-relaxed mb-8">
+            一份禮盒，等於一頓溫熱的菜<br>
+            讓每一次消費，都直接變成弱勢家庭孩童的營養支持
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://page.line.biz/account-page/1937878987617697/profile" target="_blank" rel="noopener"
+               class="grad-forest text-white px-6 py-3.5 rounded-full font-bold shadow-lg shadow-forest-700/20 hover:shadow-xl hover:-translate-y-0.5 transition flex items-center gap-2">
+              加入 LINE 詢問下單
+              <span>→</span>
+            </a>
+            <a href="#products"
+               class="bg-white border-2 border-forest-700 text-forest-700 px-6 py-3.5 rounded-full font-bold hover:bg-forest-50 transition">
+              看看商品
+            </a>
+          </div>
+
+          <!-- 三層信任標 -->
+          <div class="grid grid-cols-3 gap-4 mt-12 pt-8 border-t border-forest-100">
+            <div>
+              <div class="font-serif text-2xl font-black text-forest-700">售一即捐</div>
+              <div class="text-xs text-ink/60 mt-1">每盒直接送出菜品</div>
+            </div>
+            <div>
+              <div class="font-serif text-2xl font-black text-forest-700">在地嚴選</div>
+              <div class="text-xs text-ink/60 mt-1">契作小農肉乾果乾</div>
+            </div>
+            <div>
+              <div class="font-serif text-2xl font-black text-forest-700">透明公開</div>
+              <div class="text-xs text-ink/60 mt-1">捐贈成果即時可查</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右側視覺：雙產品立體卡片 -->
+        <div class="fade-up relative h-[460px] lg:h-[520px]">
+          <div class="absolute top-4 right-4 w-72 h-96 grad-accent rounded-3xl shadow-2xl rotate-6 hidden md:block opacity-90"></div>
+          <div class="absolute bottom-4 left-0 w-80 h-[26rem] grad-forest rounded-3xl shadow-2xl -rotate-3 p-8 text-white">
+            <div class="text-xs tracking-widest opacity-70 mb-2">PREMIUM</div>
+            <div class="font-serif text-3xl font-bold mb-1">良品禮盒</div>
+            <div class="text-sm opacity-80 mb-6">在地嚴選・送禮體面</div>
+            <div class="text-5xl font-black mb-1">NT$990</div>
+            <div class="text-sm opacity-70 mb-8">買 1 盒 = 捐 1 份菜</div>
+            <div class="space-y-2 text-sm opacity-90">
+              <div>・ 在地肉乾／果乾正規良品</div>
+              <div>・ 質感紙盒 + 燙金 + 故事卡</div>
+              <div>・ 適合企業送禮、節慶採購</div>
+            </div>
+            <div class="absolute bottom-6 left-8 right-8 pt-4 border-t border-white/20 text-xs opacity-70">
+              📩 透過 LINE 加入聯繫下單
+            </div>
+          </div>
+          <div class="absolute top-12 right-0 w-72 h-96 bg-white border-2 border-accent rounded-3xl shadow-xl rotate-3 p-7 hidden md:block">
+            <div class="text-xs tracking-widest text-accent mb-2 font-bold">惜食 · 揪團</div>
+            <div class="font-serif text-2xl font-bold text-forest-800 mb-1">福氣小禮盒</div>
+            <div class="text-xs text-ink/60 mb-5">3 包小袋組合・揪團共購</div>
+            <div class="text-4xl font-black text-accent mb-1">NT$600</div>
+            <div class="text-xs text-ink/60 mb-6">買 3 組 = 捐 1 份菜</div>
+            <div class="space-y-1.5 text-xs text-ink/70">
+              <div>・ 小包品再利用</div>
+              <div>・ 5 包 × 100g 小袋</div>
+              <div>・ 適合社區團購、市集</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== 痛點 / 為什麼 ============== -->
+  <section class="py-16 lg:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-5 lg:px-8">
+      <div class="text-center mb-14 fade-up">
+        <div class="text-sm font-bold text-accent tracking-widest mb-3">WHY WE EXIST</div>
+        <h2 class="font-serif text-3xl lg:text-5xl font-black text-forest-800 mb-4">三個被忽略的痛點</h2>
+        <p class="text-ink/60 max-w-xl mx-auto">傳統公益解決不了「日常、隱性、邊緣」這三件事</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="fade-up bg-forest-50 rounded-2xl p-8 border border-forest-100">
+          <div class="w-12 h-12 grad-forest rounded-xl flex items-center justify-center text-white font-serif text-xl font-bold mb-5">01</div>
+          <h3 class="font-serif text-xl font-bold text-forest-800 mb-3">營養斷層</h3>
+          <p class="text-sm text-ink/70 leading-relaxed">弱勢家庭孩童因預算限制，蛋白質與多元營養攝取不足，影響成長期發育。</p>
+        </div>
+        <div class="fade-up bg-forest-50 rounded-2xl p-8 border border-forest-100">
+          <div class="w-12 h-12 grad-forest rounded-xl flex items-center justify-center text-white font-serif text-xl font-bold mb-5">02</div>
+          <h3 class="font-serif text-xl font-bold text-forest-800 mb-3">支援斷層</h3>
+          <p class="text-sm text-ink/70 leading-relaxed">營養是「每日發生」的需求，但傳統公益是「事件型」的——熱度退去後，資源瞬間枯竭。</p>
+        </div>
+        <div class="fade-up bg-forest-50 rounded-2xl p-8 border border-forest-100">
+          <div class="w-12 h-12 grad-forest rounded-xl flex items-center justify-center text-white font-serif text-xl font-bold mb-5">03</div>
+          <h3 class="font-serif text-xl font-bold text-forest-800 mb-3">邊緣戶被遺忘</h3>
+          <p class="text-sm text-ink/70 leading-relaxed">未達補助標準、卻實際生活困難的「夾縫族群」，難以獲得穩定資源支持。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== 雙產品線 ============== -->
+  <section id="products" class="py-16 lg:py-24 bg-paper">
+    <div class="max-w-6xl mx-auto px-5 lg:px-8">
+      <div class="text-center mb-14 fade-up">
+        <div class="text-sm font-bold text-accent tracking-widest mb-3">OUR PRODUCTS</div>
+        <h2 class="font-serif text-3xl lg:text-5xl font-black text-forest-800 mb-4">雙產品線</h2>
+        <p class="text-ink/60 max-w-xl mx-auto">從個人惜食到企業送禮，每一款都連著一份菜品</p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-6">
+        <!-- 良品禮盒 -->
+        <article class="fade-up bg-white rounded-3xl shadow-lg overflow-hidden border-2 border-forest-700/10 hover:shadow-2xl transition group">
+          <div class="grad-forest p-8 text-white">
+            <div class="flex items-center justify-between mb-2">
+              <div class="text-xs tracking-widest opacity-80">PREMIUM GIFT</div>
+              <div class="text-xs px-3 py-1 bg-white/20 rounded-full">送禮首選</div>
+            </div>
+            <h3 class="font-serif text-3xl lg:text-4xl font-black mb-2">良品禮盒</h3>
+            <p class="text-sm opacity-80">在地嚴選・送禮體面・企業 ESG</p>
+          </div>
+          <div class="p-8">
+            <div class="flex items-baseline gap-3 mb-2">
+              <span class="text-5xl font-black text-forest-700">NT$990</span>
+              <span class="text-sm text-ink/50">/ 盒</span>
+            </div>
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-accent/10 text-accent rounded-full text-sm font-bold mb-6">
+              買 1 盒・捐 1 份菜品
+            </div>
+            <ul class="space-y-3 text-sm text-ink/80 mb-7">
+              <li class="flex gap-3"><span class="text-forest-600 font-bold">✓</span>在地肉乾／果乾正規良品</li>
+              <li class="flex gap-3"><span class="text-forest-600 font-bold">✓</span>質感紙盒 + 燙金 + 在地小農故事卡</li>
+              <li class="flex gap-3"><span class="text-forest-600 font-bold">✓</span>附公益捐贈憑證（可入企業 ESG 報告）</li>
+              <li class="flex gap-3"><span class="text-forest-600 font-bold">✓</span>客戶可加印 logo 與客製卡片（B2B 50 盒以上）</li>
+            </ul>
+            <a href="https://page.line.biz/account-page/1937878987617697/profile" target="_blank" rel="noopener"
+               class="block text-center grad-forest text-white py-3.5 rounded-xl font-bold hover:opacity-95 transition">
+              透過 LINE 詢問下單 →
+            </a>
+          </div>
+        </article>
+
+        <!-- 福氣小禮盒 -->
+        <article class="fade-up bg-white rounded-3xl shadow-lg overflow-hidden border-2 border-accent/30 hover:shadow-2xl transition group">
+          <div class="grad-accent p-8 text-white">
+            <div class="flex items-center justify-between mb-2">
+              <div class="text-xs tracking-widest opacity-80">EVERYDAY KINDNESS</div>
+              <div class="text-xs px-3 py-1 bg-white/20 rounded-full">惜食揪團</div>
+            </div>
+            <h3 class="font-serif text-3xl lg:text-4xl font-black mb-2">福氣小禮盒</h3>
+            <p class="text-sm opacity-90">3 包組合・揪團共購・社區市集</p>
+          </div>
+          <div class="p-8">
+            <div class="flex items-baseline gap-3 mb-2">
+              <span class="text-5xl font-black text-accent">NT$600</span>
+              <span class="text-sm text-ink/50">/ 組（3 包）</span>
+            </div>
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-forest-100 text-forest-700 rounded-full text-sm font-bold mb-6">
+              買 3 組・捐 1 份菜品
+            </div>
+            <ul class="space-y-3 text-sm text-ink/80 mb-7">
+              <li class="flex gap-3"><span class="text-accent font-bold">✓</span>精選肉乾／果乾，小包分裝好分享</li>
+              <li class="flex gap-3"><span class="text-accent font-bold">✓</span>3 包 × 100g 小袋分裝</li>
+              <li class="flex gap-3"><span class="text-accent font-bold">✓</span>適合辦公室分食、追劇零食、心意伴手禮</li>
+              <li class="flex gap-3"><span class="text-accent font-bold">✓</span>5 組以上揪團免運（市集可現場取）</li>
+            </ul>
+            <a href="https://page.line.biz/account-page/1937878987617697/profile" target="_blank" rel="noopener"
+               class="block text-center grad-accent text-white py-3.5 rounded-xl font-bold hover:opacity-95 transition">
+              透過 LINE 詢問揪團 →
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== 公益承諾（流程圖） ============== -->
+  <section id="promise" class="py-16 lg:py-24 grad-forest text-white relative overflow-hidden">
+    <div class="absolute inset-0 leaf-pattern opacity-30"></div>
+    <div class="max-w-6xl mx-auto px-5 lg:px-8 relative">
+      <div class="text-center mb-14 fade-up">
+        <div class="text-sm font-bold text-forest-200 tracking-widest mb-3">OUR PROMISE</div>
+        <h2 class="font-serif text-3xl lg:text-5xl font-black mb-4">售一即捐，雙線雙比例</h2>
+        <p class="text-forest-100 max-w-xl mx-auto">每一筆消費都直接觸發捐贈，沒有抽成、沒有累計門檻</p>
+      </div>
+
+      <!-- 流程圖：5 步 -->
+      <div class="grid md:grid-cols-5 gap-3 lg:gap-4 mb-10">
+        <div class="fade-up bg-white/10 backdrop-blur rounded-2xl p-5 text-center border border-white/15">
+          <div class="text-xs text-forest-200 mb-2 italic">良品禮盒</div>
+          <div class="font-serif text-xl font-bold">買 1 盒</div>
+          <div class="text-2xl font-black mt-1">NT$990</div>
+        </div>
+        <div class="fade-up bg-accent/30 rounded-2xl p-5 text-center border border-white/15">
+          <div class="text-xs text-forest-200 mb-2 italic">直接捐贈</div>
+          <div class="font-serif text-xl font-bold">送出</div>
+          <div class="text-2xl font-black mt-1">1 份菜品</div>
+        </div>
+        <div class="fade-up bg-white/10 backdrop-blur rounded-2xl p-5 text-center border border-white/15">
+          <div class="text-xs text-forest-200 mb-2 italic">福氣小禮盒</div>
+          <div class="font-serif text-xl font-bold">買 3 組</div>
+          <div class="text-2xl font-black mt-1">NT$1,800</div>
+        </div>
+        <div class="fade-up bg-accent/30 rounded-2xl p-5 text-center border border-white/15">
+          <div class="text-xs text-forest-200 mb-2 italic">直接捐贈</div>
+          <div class="font-serif text-xl font-bold">送出</div>
+          <div class="text-2xl font-black mt-1">1 份菜品</div>
+        </div>
+        <div class="fade-up bg-white text-forest-700 rounded-2xl p-5 text-center">
+          <div class="text-xs text-forest-600 mb-2 italic font-bold">透明公開</div>
+          <div class="font-serif text-xl font-bold">即時更新</div>
+          <div class="text-sm font-bold mt-1">公益儀表板</div>
+        </div>
+      </div>
+
+      <!-- 換算對照 -->
+      <div class="grid md:grid-cols-3 gap-4 fade-up">
+        <div class="bg-white/10 backdrop-blur rounded-xl p-4 flex items-center justify-between border border-white/15">
+          <span class="font-bold text-forest-100">月銷 100 良品</span>
+          <span class="text-accent-2 font-black">→ 100 份菜</span>
+        </div>
+        <div class="bg-white/10 backdrop-blur rounded-xl p-4 flex items-center justify-between border border-white/15">
+          <span class="font-bold text-forest-100">月銷 300 福氣</span>
+          <span class="text-accent-2 font-black">→ 100 份菜</span>
+        </div>
+        <div class="bg-white/10 backdrop-blur rounded-xl p-4 flex items-center justify-between border border-white/15">
+          <span class="font-bold text-forest-100">50 良 + 300 福</span>
+          <span class="text-accent-2 font-black">→ 150 份菜</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== 公益儀表板 ============== -->
+  <section id="impact" class="py-16 lg:py-24 bg-cream">
+    <div class="max-w-6xl mx-auto px-5 lg:px-8">
+      <div class="text-center mb-14 fade-up">
+        <div class="text-sm font-bold text-accent tracking-widest mb-3">IMPACT DASHBOARD</div>
+        <h2 class="font-serif text-3xl lg:text-5xl font-black text-forest-800 mb-4">公益成果，即時公開</h2>
+        <p class="text-ink/60 max-w-xl mx-auto">每週更新，所有人都能查到累計捐贈進度</p>
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+        <div class="fade-up bg-white rounded-2xl p-6 text-center border border-forest-100 shadow-sm">
+          <div class="text-xs text-ink/50 tracking-wider mb-2">累計銷售</div>
+          <div class="font-serif text-4xl font-black text-forest-700">— —</div>
+          <div class="text-xs text-ink/40 mt-1">件 / 上線後更新</div>
+        </div>
+        <div class="fade-up bg-white rounded-2xl p-6 text-center border border-forest-100 shadow-sm">
+          <div class="text-xs text-ink/50 tracking-wider mb-2">捐出菜品</div>
+          <div class="font-serif text-4xl font-black text-accent">— —</div>
+          <div class="text-xs text-ink/40 mt-1">份 / 上線後更新</div>
+        </div>
+        <div class="fade-up bg-white rounded-2xl p-6 text-center border border-forest-100 shadow-sm">
+          <div class="text-xs text-ink/50 tracking-wider mb-2">受助家庭</div>
+          <div class="font-serif text-4xl font-black text-forest-700">— —</div>
+          <div class="text-xs text-ink/40 mt-1">戶 / 上線後更新</div>
+        </div>
+        <div class="fade-up bg-white rounded-2xl p-6 text-center border border-forest-100 shadow-sm">
+          <div class="text-xs text-ink/50 tracking-wider mb-2">合作平台</div>
+          <div class="font-serif text-2xl font-black text-forest-700 mt-2">NPOChannel</div>
+          <div class="text-xs text-ink/40 mt-1">公益整合平台</div>
+        </div>
+      </div>
+
+      <!-- 受助故事預留區 -->
+      <div class="fade-up bg-white rounded-3xl p-8 lg:p-12 border border-forest-100 shadow-sm">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="px-3 py-1 bg-accent/10 text-accent rounded-full text-xs font-bold tracking-widest">受助故事</span>
+          <span class="text-xs text-ink/50">每月更新</span>
+        </div>
+        <h3 class="font-serif text-2xl font-bold text-forest-800 mb-3">「他終於不用餓著肚子寫功課了」</h3>
+        <p class="text-ink/70 leading-relaxed mb-4">
+          受助家庭的故事，是這個計畫存在的理由。我們將與 NPOChannel 平台共同記錄、整理（去識別化）每一個被支持的孩子。受助故事將於計畫上線後第一個月起，每月更新一篇。
+        </p>
+        <p class="text-sm text-ink/50 italic">— 故事將由團隊與 NPOChannel 合作刊載</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== 品牌故事 ============== -->
+  <section id="story" class="py-16 lg:py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-5 lg:px-8">
+      <div class="text-center mb-12 fade-up">
+        <div class="text-sm font-bold text-accent tracking-widest mb-3">OUR STORY</div>
+        <h2 class="font-serif text-3xl lg:text-5xl font-black text-forest-800 mb-4">為什麼是「食在有愛」</h2>
+      </div>
+
+      <div class="prose prose-lg max-w-none fade-up text-ink/80 leading-loose space-y-5">
+        <p>
+          團隊名稱「<strong class="text-forest-700">食在有愛</strong>」，諧音「<strong class="text-forest-700">實在有愛</strong>」——我們相信，真正的關懷不只是理念，而是<em class="text-forest-600">可以被實踐的行動</em>。
+        </p>
+        <p>
+          我們是一群正在台南大學進修的在職碩班學生，平日各有工作、生活與家庭。但我們共同看見一件事：在台灣，有些孩子明明在你我身旁，卻長期吃不到一頓溫熱、有營養的飯。
+        </p>
+        <p>
+          我們不想用大型募款的方式，更不想做「事件型」的公益——熱度過了就消失。我們想做一件可以<strong class="text-forest-700">每天發生</strong>的事：把日常飲食消費，變成弱勢家庭的營養支持。
+        </p>
+        <p>
+          於是有了「<strong class="text-forest-700">集食送暖：好心肝公益計畫</strong>」。我們與在地肉乾／果乾生產者合作，推出兩條產品線——「良品禮盒」走品質與送禮，「福氣小禮盒」走惜食與揪團。每一筆銷售，都直接觸發一份菜品的捐贈，由 NPOChannel 公益整合平台送到弱勢家庭手中。
+        </p>
+        <p>
+          我們相信：當「消費」與「公益」不再是兩件事，每一次購買都會自然地創造社會價值。這不只是一個品牌，<strong class="text-forest-700">而是一個讓善意變成日常的生活支持系統</strong>。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== B2B 採購 ============== -->
+  <section id="b2b" class="py-16 lg:py-24 bg-paper">
+    <div class="max-w-6xl mx-auto px-5 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="fade-up">
+          <div class="text-sm font-bold text-accent tracking-widest mb-3">FOR ENTERPRISES</div>
+          <h2 class="font-serif text-3xl lg:text-5xl font-black text-forest-800 mb-5">企業 ESG 採購</h2>
+          <p class="text-ink/70 leading-relaxed mb-7">
+            一份體面送禮 = 一份 ESG 績效 + 一份社會捐贈。我們提供企業客戶完整的<strong class="text-forest-700">採購方案書</strong>、<strong class="text-forest-700">客製化禮盒服務</strong>、以及<strong class="text-forest-700">每季捐贈成果報告</strong>，可直接對應 GRI／SASB 永續揭露條目。
+          </p>
+          <ul class="space-y-3 text-sm text-ink/80 mb-8">
+            <li class="flex gap-3"><span class="text-forest-600 font-bold">✓</span>最低訂購量（MOQ）50 盒起</li>
+            <li class="flex gap-3"><span class="text-forest-600 font-bold">✓</span>可加印 logo 與客製卡片</li>
+            <li class="flex gap-3"><span class="text-forest-600 font-bold">✓</span>提供 ESG 採購方案書 PDF</li>
+            <li class="flex gap-3"><span class="text-forest-600 font-bold">✓</span>每季捐贈成果報告書（可對外公關使用）</li>
+          </ul>
+          <a href="https://page.line.biz/account-page/1937878987617697/profile" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 grad-forest text-white px-6 py-3.5 rounded-full font-bold shadow-lg hover:-translate-y-0.5 transition">
+            LINE 聯繫業務窗口 →
+          </a>
+        </div>
+
+        <div class="fade-up bg-white rounded-3xl p-8 lg:p-10 shadow-xl border border-forest-100">
+          <div class="font-serif text-xl font-bold text-forest-800 mb-5">企業客戶採購流程</div>
+          <ol class="space-y-5">
+            <li class="flex gap-4">
+              <span class="flex-shrink-0 w-8 h-8 bg-forest-700 text-white rounded-full flex items-center justify-center font-bold text-sm">1</span>
+              <div>
+                <div class="font-bold text-forest-800">LINE 加入並提需求</div>
+                <div class="text-xs text-ink/60 mt-1">說明採購量、預計到貨日、是否需客製</div>
+              </div>
+            </li>
+            <li class="flex gap-4">
+              <span class="flex-shrink-0 w-8 h-8 bg-forest-700 text-white rounded-full flex items-center justify-center font-bold text-sm">2</span>
+              <div>
+                <div class="font-bold text-forest-800">收到報價與方案書</div>
+                <div class="text-xs text-ink/60 mt-1">含 ESG 報告對應條目、捐贈承諾</div>
+              </div>
+            </li>
+            <li class="flex gap-4">
+              <span class="flex-shrink-0 w-8 h-8 bg-forest-700 text-white rounded-full flex items-center justify-center font-bold text-sm">3</span>
+              <div>
+                <div class="font-bold text-forest-800">確認下單，公司轉帳</div>
+                <div class="text-xs text-ink/60 mt-1">提供統編開立發票，0% 金流費用</div>
+              </div>
+            </li>
+            <li class="flex gap-4">
+              <span class="flex-shrink-0 w-8 h-8 bg-forest-700 text-white rounded-full flex items-center justify-center font-bold text-sm">4</span>
+              <div>
+                <div class="font-bold text-forest-800">出貨與捐贈憑證</div>
+                <div class="text-xs text-ink/60 mt-1">隨貨附上公益捐贈憑證可供 ESG 報告引用</div>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== 最後 CTA ============== -->
+  <section class="py-20 grad-forest text-white text-center relative overflow-hidden">
+    <div class="absolute inset-0 leaf-pattern opacity-40"></div>
+    <div class="max-w-3xl mx-auto px-5 lg:px-8 relative fade-up">
+      <h2 class="font-serif text-3xl lg:text-5xl font-black mb-5">讓善意變成日常</h2>
+      <p class="text-forest-100 mb-8 leading-relaxed">當「消費」與「公益」不再是兩件事<br>每一次購買都會自然地創造社會價值</p>
+      <a href="https://page.line.biz/account-page/1937878987617697/profile" target="_blank" rel="noopener"
+         class="inline-flex items-center gap-3 bg-white text-forest-700 px-8 py-4 rounded-full font-black shadow-2xl hover:-translate-y-0.5 transition">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.631.63 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.282.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        加入 LINE 官方帳號
+      </a>
+      <p class="text-xs text-forest-200 mt-5">點此跳到 LINE 官方頁，加為好友後即可開始詢問下單</p>
+    </div>
+  </section>
+
+  <!-- ============== Footer ============== -->
+  <footer class="bg-forest-900 text-white/80 py-12">
+    <div class="max-w-6xl mx-auto px-5 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-8 mb-10">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <span class="w-9 h-9 bg-forest-600 rounded-full flex items-center justify-center text-white font-serif font-bold">愛</span>
+            <div>
+              <div class="font-serif font-bold text-white text-lg">食在有愛</div>
+              <div class="text-[10px] text-forest-200 tracking-widest">SHIZAI YOUAI</div>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed">實在有愛・讓每一餐都有溫度<br>集食送暖：好心肝公益計畫</p>
+        </div>
+        <div>
+          <div class="text-sm font-bold text-white mb-4">關於我們</div>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#story" class="hover:text-white transition">品牌故事</a></li>
+            <li><a href="#products" class="hover:text-white transition">商品介紹</a></li>
+            <li><a href="#impact" class="hover:text-white transition">公益儀表板</a></li>
+            <li><a href="#b2b" class="hover:text-white transition">企業 ESG 採購</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-sm font-bold text-white mb-4">聯繫我們</div>
+          <ul class="space-y-2 text-sm">
+            <li><a href="https://page.line.biz/account-page/1937878987617697/profile" target="_blank" rel="noopener" class="hover:text-white transition">📩 LINE 官方帳號</a></li>
+            <li class="text-forest-200">合作夥伴：NPOChannel 公益整合平台</li>
+            <li class="text-forest-200">主辦單位：國立台南大學在職碩班團隊</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-forest-700/50 text-xs text-forest-300 flex flex-wrap justify-between gap-3">
+        <div>© 2026 食在有愛 Shizai Youai. All rights reserved.</div>
+        <div>NPOChannel 公益實踐獎參賽作品</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 浮動 LINE 按鈕（手機版） -->
+  <a href="https://page.line.biz/account-page/1937878987617697/profile" target="_blank" rel="noopener"
+     class="fixed bottom-5 right-5 z-40 line-pulse w-14 h-14 bg-[#06C755] rounded-full flex items-center justify-center text-white shadow-2xl hover:scale-110 transition lg:hidden"
+     aria-label="加入 LINE">
+    <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.631.63 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.282.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+  </a>
+
+  <script>
+    // 進場動畫
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('in');
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
