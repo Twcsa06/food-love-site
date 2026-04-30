@@ -22,8 +22,7 @@
 
 ## 訂購方式
 
-所有訂購透過 LINE 官方帳號處理：[加入官方帳號](https://page.line.biz/account-page/1937878987617697/profile)
-
+所有訂購透過 LINE 官方帳號處理：[加入官方帳號](https://lin.ee/UUwP7YL)
 ## 技術細節
 
 - **架站平台**：GitHub Pages（免費）
@@ -53,7 +52,7 @@
 
 ## 聯絡
 
-- LINE 官方帳號：[加入詢問](https://page.line.biz/account-page/1937878987617697/profile)
+- LINE 官方帳號：[加入詢問](https://lin.ee/UUwP7YL)
 - 合作平台：NPOChannel 公益整合平台
 - 主辦團隊：國立台南大學 在職碩士班
 
